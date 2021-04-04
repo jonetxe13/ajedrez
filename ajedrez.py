@@ -1,6 +1,6 @@
 import pygame
 import numpy as np
-import tablero
+
 
 SCREEN = pygame.display.set_mode((400, 400))
 SCREENSIZE = 500
@@ -11,6 +11,22 @@ CELLSIZE = 35
 gameState = True
 
 pygame.init()
+
+#piezas
+alfil0 = pygame.image.load("alfil1.png")
+alfil = pygame.transform.scale(alfil0, (150, 75))
+caballo0 = pygame.image.load("caballo.png")
+caballo = pygame.transform.scale(caballo0, (150, 75))
+
+def piezas():
+    # Indicamos la posicion de las "Surface" sobre la ventana
+    SCREEN.blit(caballo, (40, 280))
+    SCREEN.blit(caballo, (212, 280))
+    SCREEN.blit(alfil, (102, 280))
+    SCREEN.blit(alfil, (207, 280))
+    # se muestran lo cambios en pantalla
+    pygame.display.flip()
+
 
 def board():
     for x in range(1, CELLNUMBER+1, 2):
@@ -30,9 +46,6 @@ def board():
 while gameState:
     SCREEN
     SCREEN.fill(WHITE)
-    tablero.board()
+    board()
+    piezas()
     pygame.display.update()
-
-for evento in pygame.event.get():
-    if evento.type == pygame.QUIT:
-        gameState = False
