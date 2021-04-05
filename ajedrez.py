@@ -2,28 +2,28 @@ import pygame
 import numpy as np
 
 
-SCREEN = pygame.display.set_mode((400, 400))
+SCREEN = pygame.display.set_mode((600, 600))
 SCREENSIZE = 500
 BLACK, WHITE = (0, 0, 0), (255, 255, 255)
 CELLNUMBER = 8
-CELLSIZE = 35
+CELLSIZE = 60
 
 gameState = True
 
 pygame.init()
 
 #piezas
-alfil0 = pygame.image.load("alfil1.png")
-alfil = pygame.transform.scale(alfil0, (150, 75))
-caballo0 = pygame.image.load("caballo.png")
-caballo = pygame.transform.scale(caballo0, (150, 75))
+alfil = pygame.image.load("alfil1.png")
+alfilB = pygame.transform.scale(alfil, (CELLSIZE, CELLSIZE))
+caballo = pygame.image.load("caballo.png")
+caballoB = pygame.transform.scale(caballo, (CELLSIZE, CELLSIZE))
 
 def piezas():
-    # Indicamos la posicion de las "Surface" sobre la ventana
-    SCREEN.blit(caballo, (40, 280))
-    SCREEN.blit(caballo, (212, 280))
-    SCREEN.blit(alfil, (102, 280))
-    SCREEN.blit(alfil, (207, 280))
+    # Indicamos la posicion sobre la ventana
+    SCREEN.blit(caballoB, (CELLSIZE*2, CELLSIZE*8))
+    SCREEN.blit(caballoB, (CELLSIZE*7, CELLSIZE*8))
+    SCREEN.blit(alfilB, (CELLSIZE*3, CELLSIZE*8))
+    SCREEN.blit(alfilB, (CELLSIZE*6, CELLSIZE*8))
     # se muestran lo cambios en pantalla
     pygame.display.flip()
 
