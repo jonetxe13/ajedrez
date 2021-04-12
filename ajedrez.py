@@ -2,11 +2,11 @@ import pygame
 import numpy as np
 
 
-SCREEN = pygame.display.set_mode((600, 600))
-SCREENSIZE = 500
+SCREEN = pygame.display.set_mode((400, 400))
+SCREENSIZE = 400
 BLACK, WHITE = (0, 0, 0), (255, 255, 255)
 CELLNUMBER = 8
-CELLSIZE = 60
+CELLSIZE = 35
 
 gameState = True
 
@@ -27,6 +27,16 @@ def piezas():
     # se muestran lo cambios en pantalla
     pygame.display.flip()
 
+def movimiento():
+    ev = pygame.event.get()
+    global pos
+  # proceed events
+    for event in ev:
+        if event.type == pygame.MOUSEBUTTONUP:
+            pos = pygame.mouse.get_pos()
+
+    SCREEN.blit(alfilB, (pos))
+    
 
 def board():
     for x in range(1, CELLNUMBER+1, 2):
@@ -48,4 +58,5 @@ while gameState:
     SCREEN.fill(WHITE)
     board()
     piezas()
+    movimiento()
     pygame.display.update()
